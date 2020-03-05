@@ -5,7 +5,7 @@ public class Main {
 	public static void encrypt_decrypt (String message, int key, boolean flag) {
 		for (int i = 0; i < message.length(); i++) {
 			char letter = message.charAt(i);
-			if (flag == true) {
+			if (flag) {
 				letter += (char)key;
 			} else {
 				letter -= (char)key;
@@ -19,13 +19,7 @@ public class Main {
 		String act = sc.nextLine();
 		String message = sc.nextLine();
 		int key = sc.nextInt() % 255;
-		boolean flag;
-
-		if (act.equals("enc")) {
-			flag = true;
-		} else {
-			flag = false;
-		}
+		boolean flag = act.equals("enc");
 		encrypt_decrypt (message, key, flag);
 	}
 }

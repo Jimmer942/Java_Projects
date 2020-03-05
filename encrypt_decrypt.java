@@ -2,19 +2,14 @@ package encryptdecrypt;
 import java.util.Scanner;
 
 public class Main {
-	public static void encrypt (String message, int key) {
+	public static void encrypt_decrypt (String message, int key, boolean flag) {
 		for (int i = 0; i < message.length(); i++) {
 			char letter = message.charAt(i);
-			letter += (char)key;
-			System.out.print(letter);
-		}
-		System.out.println();
-	}
-
-	public static void decrypt (String message, int key) {
-		for (int i = 0; i < message.length(); i++) {
-			char letter = message.charAt(i);
-			letter -= (char)key;
+			if (flag == true) {
+				letter += (char)key;
+			} else {
+				letter -= (char)key;
+			}
 			System.out.print(letter);
 		}
 		System.out.println();
@@ -24,11 +19,13 @@ public class Main {
 		String act = sc.nextLine();
 		String message = sc.nextLine();
 		int key = sc.nextInt() % 255;
+		boolean flag;
 
 		if (act.equals("enc")) {
-			encrypt(message, key);
+			flag = true;
 		} else {
-			decrypt(message, key);
+			flag = false;
 		}
+		encrypt_decrypt (message, key, flag);
 	}
 }
